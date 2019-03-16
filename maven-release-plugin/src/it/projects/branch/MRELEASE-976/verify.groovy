@@ -19,10 +19,8 @@
  */
 
 def project = new XmlSlurper().parse( new File( basedir, "pom.xml" ) )
-assert project.version.text() == "1.0-SNAPSHOT"
+assert project.version.text() == "1.0-SNAPSHOT" : 'Unexpected value for project.version in pom.xml'
 
 // verifies that the version is unchanged because of the custom policy: 1.0-SNAPSHOT -> 1.0-SNAPSHOT
 def projectNext = new XmlSlurper().parse( new File( basedir, "pom.xml.next" ) )
-assert projectNext.version.text() == "1.0-SNAPSHOT"
-
-return true
+assert projectNext.version.text() == "1.0-SNAPSHOT" : 'Unexpected value for project.version in pom.xml.next'
